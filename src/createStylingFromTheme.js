@@ -7,13 +7,13 @@ const colorMap = theme => ({
   BOOLEAN_COLOR: theme.base09,
   DATE_COLOR: theme.base0B,
   FUNCTION_COLOR: theme.base08,
-  ITEM_STRING_COLOR: theme.base0B,
-  ITEM_STRING_EXPANDED_COLOR: theme.base03,
-  LABEL_COLOR: theme.base0D,
+  ITEM_STRING_COLOR: "#3E9ED0",
+  ITEM_STRING_EXPANDED_COLOR: "#808080",
+  LABEL_COLOR: "#000000",
   NUMBER_COLOR: theme.base09,
   NULL_COLOR: theme.base08,
-  STRING_COLOR: theme.base0B,
-  SYMBOL_COLOR: theme.base08,
+  STRING_COLOR: "#3E9ED0",
+  SYMBOL_COLOR: "#3E9ED0",
   TEXT_COLOR: theme.base07,
   UNDEFINED_COLOR: theme.base08,
 });
@@ -36,29 +36,38 @@ const getStylingFromBase16 = (base16Theme) => {
     tree: {
       backgroundColor: colors.BACKGROUND_COLOR,
       padding: 5,
+      
     },
-
     value: ({ style }) => ({
       style: {
+        
         flexDirection: 'row',
         marginLeft: 10,
+        
         ...style,
       },
     }),
 
     label: {
       color: colors.LABEL_COLOR,
+      fontSize: 16,
       flexDirection: 'row',
+      fontFamily: "Arial",
     },
 
     valueLabel: {
       marginBottom: 8,
+      fontSize: 16,
+      fontFamily: "Arial",
     },
 
     valueText: ({ style }, nodeType) => ({
       style: {
         color: valueColorMap(colors)[nodeType],
         marginLeft: 5,
+        flexShrink: 1,
+        fontSize: 16,
+      fontFamily: "Arial",
         ...style,
       },
     }),
@@ -75,6 +84,8 @@ const getStylingFromBase16 = (base16Theme) => {
         color: colors.LABEL_COLOR,
         paddingLeft: expanded ? 10 : 15,
         paddingTop: expanded ? 5 : 5,
+        fontSize: 16,
+        fontFamily: "Arial",
       },
     }),
 
@@ -82,8 +93,10 @@ const getStylingFromBase16 = (base16Theme) => {
       style: {
         fontSize: 15,
         marginLeft: 0,
+        
         transform: expanded ? [{ rotate: '90deg' }] : [{ rotate: '0deg' }],
         ...style,
+        color: expanded ? "#B3B3B3" : "#000000",
       },
     }),
 
@@ -96,7 +109,7 @@ const getStylingFromBase16 = (base16Theme) => {
       },
     }),
 
-    arrowSign: { color: colors.ARROW_COLOR },
+    // arrowSign: { color: colors.ARROW_COLOR },
 
     nestedNode: ({ style }, keyPath, nodeType, expanded, expandable) => ({
       style: {
@@ -119,7 +132,11 @@ const getStylingFromBase16 = (base16Theme) => {
 
     nestedNodeChildren: ({ style }) => ({
       style: {
-        marginLeft: 10,
+        marginLeft: 6,
+        // backgroundColor:'#ff00ff',
+        borderLeftWidth:1,
+        borderLeftColor:'#CCCCCC',
+        paddingLeft:10,
         ...style,
       },
     }),
